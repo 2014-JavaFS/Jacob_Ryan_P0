@@ -1,4 +1,4 @@
 package net.revature.project_0.Bank;
 
-public class Bank {
+public class BankAccount {
 }
