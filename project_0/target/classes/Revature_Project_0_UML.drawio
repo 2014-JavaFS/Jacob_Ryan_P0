@@ -1,0 +1,103 @@
+<mxfile host="app.diagrams.net" modified="2024-07-10T22:37:41.946Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="fY8tTocePavnUfRPXpTz" version="24.6.4" type="device">
+  <diagram name="Page-1" id="Y2J5tfl4Lehv0tbicX7J">
+    <mxGraphModel dx="2267" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0glO3w27dz8qWhFezYGf-1" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Bank_Account_Database&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Account_Number&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;User_Number_ID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Account_Type&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Account_Ballance&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Account_Type_Name&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="160" y="480" width="190" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-2" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; text-decoration: underline; line-height: 70%;&quot;&gt;&lt;b&gt;Object:Type&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px; line-height: 140%;&quot;&gt;field1 = Integer&lt;br&gt;field2 = Distinct Integer&lt;br&gt;Account_Type = Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px; line-height: 140%;&quot;&gt;Account_Ballance =&amp;nbsp; Big Double?&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px; line-height: 140%;&quot;&gt;Account_Type_Name = Varchar(32)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="350" y="480" width="210" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-3" value="BankAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="30" width="370" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-4" value="int AccountNumber&lt;div&gt;int UserNumberID&lt;/div&gt;&lt;div&gt;int AccountType&lt;/div&gt;&lt;div&gt;BigDecimal Ballance&lt;/div&gt;&lt;div&gt;String AccountTypeName&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-3">
+          <mxGeometry y="26" width="370" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-5" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="0glO3w27dz8qWhFezYGf-3">
+          <mxGeometry y="110" width="370" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-6" value="BankAccount(int UserNumberID)&lt;div&gt;BankAccount(int UserNumberID, int AccountType, BigDecimal Ballance)&lt;/div&gt;&lt;div&gt;int getAccountNumber()&lt;/div&gt;&lt;div&gt;void setAccountNumber(int newAccountNumber)&lt;/div&gt;&lt;div&gt;int getUserNumberID()&lt;/div&gt;&lt;div&gt;void setUserNumberID(int newUserID)&lt;/div&gt;&lt;div&gt;int getAccountType()&lt;/div&gt;&lt;div&gt;void setAccountType(int newAccountType)&lt;/div&gt;&lt;div&gt;BigDecimal getBallance()&lt;/div&gt;&lt;div&gt;voidl setBallance(BigDecimal NewBallance)&lt;/div&gt;&lt;div&gt;Sring getAccountTypeName()&lt;/div&gt;&lt;div&gt;void setAccountTypeName(string NewAccountTypeName)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-3">
+          <mxGeometry y="118" width="370" height="252" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-7" value="BankAccountService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="30" width="280" height="278" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-8" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-7">
+          <mxGeometry y="26" width="280" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-9" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="0glO3w27dz8qWhFezYGf-7">
+          <mxGeometry y="130" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-10" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-7">
+          <mxGeometry y="138" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-11" value="BankAccountController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="30" width="270" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-12" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-11">
+          <mxGeometry y="26" width="270" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="0glO3w27dz8qWhFezYGf-11">
+          <mxGeometry y="160" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-14" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-11">
+          <mxGeometry y="168" width="270" height="172" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-15" value="AccountHolder" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-170" y="700" width="230" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-16" value="String Email&lt;div&gt;int UserNumberID&lt;/div&gt;&lt;div&gt;String Password&lt;/div&gt;&lt;div&gt;String FirstName&lt;/div&gt;&lt;div&gt;String LastName&lt;/div&gt;&lt;div&gt;ArrayList&amp;lt;BankAccount&amp;gt; User Accounts&amp;nbsp;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-15">
+          <mxGeometry y="26" width="230" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="0glO3w27dz8qWhFezYGf-15">
+          <mxGeometry y="140" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-18" value="AccountHolder()&lt;div&gt;AccountHolder(String UserName, String Password)&lt;/div&gt;&lt;div&gt;String getEmail()&lt;/div&gt;&lt;div&gt;Void setEmail(String Email)&lt;/div&gt;&lt;div&gt;String getPassword()&lt;/div&gt;&lt;div&gt;String setPassword(String Password)&lt;/div&gt;&lt;div&gt;String getFirstName()&lt;/div&gt;&lt;div&gt;String setFIrstName(String Name)&lt;/div&gt;&lt;div&gt;&lt;div&gt;String getLastName()&lt;/div&gt;&lt;div&gt;String setLastName(String Name)&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-15">
+          <mxGeometry y="148" width="230" height="222" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-19" value="AccountService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="700" width="300" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-20" value="String UserName&lt;div&gt;String Password&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-19">
+          <mxGeometry y="26" width="300" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="0glO3w27dz8qWhFezYGf-19">
+          <mxGeometry y="80" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-22" value="Boolean CheckDB()&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-19">
+          <mxGeometry y="88" width="300" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-23" value="AccountController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="700" width="290" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-24" value="&lt;div&gt;AccountHolder CurrentUser&lt;/div&gt;&lt;div&gt;Boolean LoginStatus&lt;/div&gt;&lt;div&gt;AccountHolder CurrentStatus&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-23">
+          <mxGeometry y="26" width="290" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-25" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="0glO3w27dz8qWhFezYGf-23">
+          <mxGeometry y="90" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-26" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;UserLogin()&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Void Register()&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Void Register(String UserName, String Password)&lt;/div&gt;&lt;div&gt;AccountHolder UserLogin(AccountHolder CurrentStatus, String UserName, String Password)&lt;/div&gt;&lt;div&gt;Void GetAccountOptions()&lt;/div&gt;&lt;div&gt;Void Logout()&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0glO3w27dz8qWhFezYGf-23">
+          <mxGeometry y="98" width="290" height="122" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-27" value="BankRunner" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="640" y="540" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-28" value="Bank" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="80" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-29" value="Accounts" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-350" y="760" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-30" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;Accounts_Database&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Email&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK1&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;User_Number_ID&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Password&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;First_Name&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;Last_Name&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-230" y="480" width="160" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="0glO3w27dz8qWhFezYGf-31" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; text-decoration: underline; line-height: 70%;&quot;&gt;&lt;b&gt;Object:Type&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px; line-height: 140%;&quot;&gt;Email = Varchar (320) Distinct&lt;br&gt;UserNumberID = Distinct Integer&lt;br&gt;Password = Varchar (64)&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px; line-height: 140%;&quot;&gt;First Name = VarChar&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px; line-height: 140%;&quot;&gt;Last Name = VarChar&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-70" y="480" width="190" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
