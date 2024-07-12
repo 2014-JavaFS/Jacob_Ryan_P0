@@ -1,0 +1,23 @@
+Project 0
+
+For this project you will be building an API that will be presented on Friday July 19th, 2024 in its final form.
+This is a Banking application, bellow are the details required.
+
+The application should be able to facilitate These user stories at a minimum
+
+MVP(Minimum Viable Product) USER Stories
+As a user I can:
+	* [] Register a new user account with the system (Must be secured with a password)
+	* [] Login with my existing credentials
+	* [] create at least one account
+	* [] deposit funds into an account (use doubles, not ints)
+	* [] withdraw funds from an account (No overdrafting!)
+	* [] View the balance of my account(s) (all balance displays must be in proper currency format)
+
+Bonus User Stories if time is available
+Suggested from Revature:
+As a user I can:
+	* [] View the transaction history for an account
+	* [] create multiple accounts per user (checking, savings, etc)
+	* [] share a joint account with another user
+	* [] transfer money between accounts

@@ -9,6 +9,7 @@ public class Account {
     private String firstName;
     private String lastName;
 
+    public Account(){}
     public Account(String userName, String password, int userNumID) {
         this.userName = userName;
         this.password = password;

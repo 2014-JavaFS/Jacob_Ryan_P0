@@ -30,3 +30,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 /project_0/src/main/resources/db.properties
+/project_0/target/classes/db.properties

@@ -22,7 +22,7 @@ public class ConnectionFactory {
     // Singleton Design via privatizing the Constructor to only be executable int he class itself
     private ConnectionFactory(){
         try {
-            properties.load(new FileReader("src/main/resources/db.properties"));
+            properties.load(new FileReader("project_0/src/main/resources/db.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
