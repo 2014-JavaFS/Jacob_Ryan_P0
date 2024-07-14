@@ -37,6 +37,8 @@ public class AccountRepository implements Serviceable<Account> {
         return userDatabaseData;
     }
 
+
+    //TODO Move this to create and change this to linking bank accounts?
     public Account addAccount(Account addedAccount){
         try(Connection conn = ConnectionFactory.getConnectionFactory().getConnection()){
 

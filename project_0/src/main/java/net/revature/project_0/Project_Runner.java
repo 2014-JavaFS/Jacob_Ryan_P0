@@ -23,8 +23,8 @@ public class Project_Runner
         Scanner scanner = new Scanner(System.in);
         //Create Banks runners
         BankRepository bankRepository = new BankRepository();
-        BankAccountService bankAccountService = new BankAccountService();
-        //BankAccountController bankAccountController = new BankAccountController(scanner, bankAccountService);
+        BankAccountService bankAccountService = new BankAccountService(bankRepository);
+        BankAccountController bankAccountController = new BankAccountController(scanner, bankAccountService);
         //Create Account runners
         AccountRepository accountRepository = new AccountRepository();
         AccountService accountService = new AccountService(accountRepository);
