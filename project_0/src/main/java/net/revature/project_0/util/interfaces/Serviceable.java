@@ -4,7 +4,7 @@ package net.revature.project_0.util.interfaces;
 import java.util.List;
 
 public interface Serviceable<O> {
-    O lookup(List<O> databaseContents, int id);
+    List<O> lookup();
     O create(O newObject);
     O findByID(int number);
 }

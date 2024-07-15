@@ -78,9 +78,9 @@ select * from bank_Account;
 select * from user_Account;
 
 -- Setting up the relationship from Bank to User accounts
--- This is setup in the oppisite way as needed currently
-alter table user_Account
+-- Attempting to fix it, will need to check if it works
+alter table bank_Account
 add constraint fk_user_number_ID
-FOREIGN KEY (user_number_ID) references bank_Account(user_number_ID);
+FOREIGN KEY (user_number_ID) references user_Account(user_number_ID);
 
 

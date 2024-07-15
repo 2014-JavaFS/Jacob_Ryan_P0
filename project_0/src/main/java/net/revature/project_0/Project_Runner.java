@@ -1,5 +1,6 @@
 package net.revature.project_0;
 
+import io.javalin.Javalin;
 import net.revature.project_0.Account.AccountController;
 import net.revature.project_0.Account.AccountRepository;
 import net.revature.project_0.Account.AccountService;
@@ -21,37 +22,44 @@ public class Project_Runner
         boolean userSessionActive=true;     //Controls User Loop ie program running or not
         int userChoice=0;
         Scanner scanner = new Scanner(System.in);
+
+        Javalin app = Javalin.create();
+
         //Create Banks runners
         BankRepository bankRepository = new BankRepository();
         BankAccountService bankAccountService = new BankAccountService(bankRepository);
         BankAccountController bankAccountController = new BankAccountController(scanner, bankAccountService);
+
         //Create Account runners
         AccountRepository accountRepository = new AccountRepository();
         AccountService accountService = new AccountService(accountRepository);
         AccountController accountController = new AccountController(scanner, accountService);
+        accountController.registerPaths(app);
         //Auth things?
 
 
+        app.start(8080);
 
-        do{
+
+        //do{
             //Inside of here should prompt the User to Login, then be able to go through the various options
             //Probably will be replaced by some HTML UI later if we get to that
 
-            System.out.println( "Welcome to Online Bank 343" );
-            userSessionActive=false;
+            //System.out.println( "Welcome to Online Bank 343" );
+            //=false;
 
             //Temp DB checking stuff
-            System.out.println( "Testing database insert method" );
-            System.out.println( "Please enter Email" );
-            String tempEmail =scanner.nextLine();
-            System.out.println( "Please enter Password" );
-            String tempPassword = scanner.nextLine();
+            //System.out.println( "Testing database insert method" );
+            //System.out.println( "Please enter Email" );
+            //String tempEmail =scanner.nextLine();
+            //System.out.println( "Please enter Password" );
+            //String tempPassword = scanner.nextLine();
             //Needs to be changed after each entry
-            int tempUserID=9;
-            accountController.addAccount(tempEmail,tempPassword,tempUserID);
+            //int tempUserID=9;
+            //accountController.addAccount(tempEmail,tempPassword,tempUserID);
 
 
 
-        }while(userSessionActive);
+       // }while(userSessionActive);
     }
 }
