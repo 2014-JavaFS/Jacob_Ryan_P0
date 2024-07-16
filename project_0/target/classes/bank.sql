@@ -38,6 +38,7 @@ create table user_Account(
     password varchar(64) not null,
     First_Name varchar(64),
     Last_Name varchar(64)
+    account_privilege member_enum default 'endUser'
 );
 
 --data propagation for testing

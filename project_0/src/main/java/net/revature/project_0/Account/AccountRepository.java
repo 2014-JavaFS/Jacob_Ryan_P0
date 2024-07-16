@@ -135,6 +135,29 @@ public class AccountRepository implements Serviceable<Account> {
 
     }
 
+    public Account findByEmailAndPassword(String email, String password){
+            try(Connection conn = ConnectionFactory.getConnectionFactory().getConnection()){
+
+                String sqlEntry = "select * from user_Account where email = ? AND password =?";
+                PreparedStatement preparedStatement = conn.prepareStatement(sqlEntry);
+
+                // DO NOT FORGET SQL is 1-index, not 0-index. They made preparedStatement 1-index
+                preparedStatement.setString(1,email);
+                preparedStatement.setString(2,password);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if(!resultSet.next())
+                    throw new DataNotFoundException("No User with that ID exists");
+
+                return generateAccountFromResultSet(resultSet);
+
+            }catch(SQLException e){
+                e.printStackTrace();
+                return null;
+            }
+
+    }
+
     private Account generateAccountFromResultSet(ResultSet rs) throws SQLException{
         Account account = new Account();
         account.setUserName(rs.getString("email"));
@@ -142,6 +165,7 @@ public class AccountRepository implements Serviceable<Account> {
         account.setPassword(rs.getString("password"));
         account.setFirstName(rs.getString("First_Name"));
         account.setLastName(rs.getString("Last_Name"));
+        account.setAccountType(rs.getString("account_privilege"));
         return account;
     }
 

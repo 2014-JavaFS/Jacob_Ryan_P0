@@ -28,7 +28,7 @@ public class AccountController implements Controller {
             Account addedAccount = new Account(email, password, userNum);
 
             try{
-                accountService.addAccount(addedAccount);
+                accountService.create(addedAccount);
             } catch(InvalidInputException e){
                 e.printStackTrace();
                 System.out.println(e.getMessage());

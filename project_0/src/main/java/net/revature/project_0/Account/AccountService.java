@@ -40,15 +40,9 @@ public class AccountService implements Serviceable<Account> {
     //TODO: UPDATE FEATURE????
 
 
-    //TODO: Either change to Bank Account Associated Lookup table, or remove
-    public List<Account> findAllAccounts(){
-        List<Account> accounts = accountRepository.lookup();
-        return accounts;
-    }
 
-    //TODO: Either make this the Linked Bank Account Creation Tool or Remove
-    public BankAccount addAccount(Account addedAccount) throws InvalidInputException{
-        return accountRepository.addAccount(addedAccount);
+    public Account findByEmailAndPassword(String email, String password){
+        return accountRepository.findByEmailAndPassword(email, password);
     }
 
 

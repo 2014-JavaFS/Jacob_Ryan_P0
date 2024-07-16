@@ -8,6 +8,11 @@ public class Account {
     private String password;
     private String firstName;
     private String lastName;
+    private AccountType type;
+
+    public enum AccountType{
+        endUser, admin
+    }
 
     public Account(){}
     public Account(String userName, String password, int userNumID) {
@@ -54,5 +59,13 @@ public class Account {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public AccountType getAccountType(){
+        return this.type;
+    }
+
+    public void setAccountType(String type){
+        this.type=AccountType.valueOf(type);
     }
 }
