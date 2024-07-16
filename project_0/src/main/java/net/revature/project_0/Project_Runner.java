@@ -7,6 +7,8 @@ import net.revature.project_0.Account.AccountService;
 import net.revature.project_0.Bank.BankAccountController;
 import net.revature.project_0.Bank.BankAccountService;
 import net.revature.project_0.Bank.BankRepository;
+import net.revature.project_0.util.auth.AuthController;
+import net.revature.project_0.util.auth.AuthService;
 
 import java.util.Scanner;
 
@@ -29,14 +31,16 @@ public class Project_Runner
         BankRepository bankRepository = new BankRepository();
         BankAccountService bankAccountService = new BankAccountService(bankRepository);
         BankAccountController bankAccountController = new BankAccountController(scanner, bankAccountService);
-
+        bankAccountController.registerPaths(app);
         //Create Account runners
         AccountRepository accountRepository = new AccountRepository();
         AccountService accountService = new AccountService(accountRepository);
         AccountController accountController = new AccountController(scanner, accountService);
         accountController.registerPaths(app);
         //Auth things?
-
+        AuthService authService = new AuthService(accountService);
+        AuthController authController = new AuthController(authService);
+        authController.registerPaths(app);
 
         app.start(8080);
 

@@ -1,8 +1,10 @@
 package net.revature.project_0.Bank;
 
 import net.revature.project_0.util.exceptions.DataNotFoundException;
+import net.revature.project_0.util.exceptions.InvalidInputException;
 import net.revature.project_0.util.interfaces.Serviceable;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,21 +20,16 @@ public class BankAccountService implements Serviceable<BankAccount> {
     //This returns all Bank Accounts that the Account Holder has with the bank
     @Override
     public List<BankAccount> lookup() {
-
+        List<BankAccount> dbContents = bankRepository.lookup();
 
         //probably should return a data not found exception
-        return null;
+        return dbContents;
     }
 
     @Override
     public BankAccount create(BankAccount newBankAccount) {
-        //TODO: Need to check that the Account's ID that has been given actually exists
+        return bankRepository.create(newBankAccount);
 
-        //TODO: Need to check that the Bank Account Number Doesn't already exist
-
-        //TODO: Then I need to actually add it to the DB before returning the BankAccount
-
-        return newBankAccount;
     }
 
     //This returns the account from number given
@@ -40,4 +37,35 @@ public class BankAccountService implements Serviceable<BankAccount> {
     public BankAccount findByID(int number) throws DataNotFoundException {
         return bankRepository.findByID(number);
     }
+
+    public List<BankAccount> getAssociatedAccounts(int idNum){
+        //Should probably check that the ID is the same as the one that is logged in
+        //Though I need to make the Login Feature to be able to do that
+
+        if(true) {
+            return bankRepository.findAssociatedAccounts(idNum);
+            }
+        else {
+            return null;
+            }
+
+    }
+
+    //TODO:Placeholder
+    public BankAccount putDeposit(BigDecimal selectedAccount, int accountNumber, int accountID){
+
+        //TODO Once Login is made, check that everything is good
+
+        BigDecimal toCompare = BigDecimal.valueOf(0);
+        if(selectedAccount.compareTo(toCompare) < 0)
+            throw new InvalidInputException("Deposit Amount Must Not Be Negative");
+
+        return bankRepository.deposit(selectedAccount, accountNumber, accountID);
+    }
+
+    //TODO:Placeholder
+    public BankAccount putWithdrawal(){
+        return null;
+    }
+
 }
