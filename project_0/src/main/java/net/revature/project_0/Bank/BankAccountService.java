@@ -11,7 +11,6 @@ import java.util.List;
 public class BankAccountService implements Serviceable<BankAccount> {
 
     private BankRepository bankRepository;
-    private List<BankAccount> listOfAccounts = new ArrayList<>();
 
     public BankAccountService(BankRepository bankRepository){
         this.bankRepository=bankRepository;
@@ -39,22 +38,13 @@ public class BankAccountService implements Serviceable<BankAccount> {
     }
 
     public List<BankAccount> getAssociatedAccounts(int idNum){
-        //Should probably check that the ID is the same as the one that is logged in
-        //Though I need to make the Login Feature to be able to do that
 
-        if(true) {
             return bankRepository.findAssociatedAccounts(idNum);
-            }
-        else {
-            return null;
-            }
-
     }
 
-    //TODO:Placeholder
+    //TODO:Admin Deposit Function Need to Check that Person Calling this Method is an Admin
     public BankAccount putDeposit(BigDecimal selectedAccount, int accountNumber, int accountID){
 
-        //TODO Once Login is made, check that everything is good
 
         BigDecimal toCompare = BigDecimal.valueOf(0);
         if(selectedAccount.compareTo(toCompare) < 0)
@@ -63,9 +53,31 @@ public class BankAccountService implements Serviceable<BankAccount> {
         return bankRepository.deposit(selectedAccount, accountNumber, accountID);
     }
 
-    //TODO:Placeholder
+    //TODO:Placeholder for Admin Withdrawl Method, Should Implement
     public BankAccount putWithdrawal(){
         return null;
     }
+
+    //End User Create Account
+    public boolean openNewAccount(int userID){
+        //TODO:Read Bellow and Implement for MVP
+        //userID is the Account Owner, Need to find a valid Account Number that isn't in use
+        //Look at AccountService newUserCreateAccount for reference
+        //Create a regular Bank Account and fill it with the data, then Call Create with the
+        //Filled in Bank Account Object
+
+
+        return true;
+    }
+
+    //End User Deposit into Account
+    //TODO:Implement
+
+
+    //End User Withdrawal from Account
+    //TODO:Implement
+
+
+
 
 }

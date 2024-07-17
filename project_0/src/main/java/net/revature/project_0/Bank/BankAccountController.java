@@ -31,7 +31,8 @@ public class BankAccountController implements Controller {
 
 
     //The Actual End User Versions
-        app.get("/Account/Holdings",this::getAccountFromEnviorment);
+        app.get("/Account/Holdings",this::getAccountFromEnvironment);
+        app.post("/Account/Holdings/OpenNewAccount",this::postNewBankAccount);
         app.put("/Account/Holdings/Withdrawal",this::putWithdrawal);
         app.put("/Account/Holdings/Deposit",this::putDeposit);
 
@@ -85,13 +86,23 @@ public class BankAccountController implements Controller {
     //@TODO Make the End User Section Work for MVP
 
     //End User View
-    private void getAccountFromEnviorment(Context context){
+    private void getAccountFromEnvironment(Context context){
+        String accountString ="";
+        accountString+=context.header("user_number_ID");
+        if(accountString.isEmpty()){
+            context.json("Not Logged In\nCreate an account ");
+            return;
+        }
 
+        List<BankAccount> dbContents = bankAccountService.getAssociatedAccounts(Integer.parseInt(accountString));
+        context.json(dbContents);
 
     }
 
     //End User Deposit
+    //TODO:Implement
     private void putDeposit(Context context){
+
 
         int accountID = Integer.parseInt(context.pathParam("accountID"));
         int accountNum = Integer.parseInt(context.pathParam("accountNumber"));
@@ -102,9 +113,24 @@ public class BankAccountController implements Controller {
     }
 
     //End User Withdrawal
+    //TODO:Implement
     private void putWithdrawal(Context context){}
 
 
     //End User Create New Account
+    //TODO:Implement
+    private void postNewBankAccount(Context context){
+        String accountString ="";
+        accountString+=context.header("user_number_ID");
+        if(accountString.isEmpty()){
+            context.json("Not Logged In\nCreate an account ");
+            return;
+        }
 
+        if(bankAccountService.openNewAccount(Integer.parseInt(accountString)))
+            context.json("Created New Account");
+        else
+            context.json("Account Creation Failed Try Again Later");
+
+    }
 }

@@ -56,6 +56,7 @@ public class AccountController implements Controller {
 
     }
 
+    //End User View Account
     private void getAccountByID(Context context) {
 
         String accountString ="";
