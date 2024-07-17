@@ -32,12 +32,14 @@ create table bank_Account(
     account_type_name varchar(32)
 );
 
+
+create type member_enum as enum ('endUser','admin');
 create table user_Account(
     email varchar(320) unique,
     user_number_ID integer primary key,
     password varchar(64) not null,
     First_Name varchar(64),
-    Last_Name varchar(64)
+    Last_Name varchar(64),
     account_privilege member_enum default 'endUser'
 );
 

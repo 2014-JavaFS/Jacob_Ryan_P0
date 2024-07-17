@@ -68,9 +68,9 @@ public class AccountRepository implements Serviceable<Account> {
             preparedStatement.setInt(1, number);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(!resultSet.next())
+            if(!resultSet.next()) {
                 throw new DataNotFoundException("No User with that ID exists");
-
+                }
             return generateAccountFromResultSet(resultSet);
 
         }catch(SQLException e){
@@ -157,6 +157,30 @@ public class AccountRepository implements Serviceable<Account> {
             }
 
     }
+
+    public Account findByEmail(String email){
+        try(Connection conn = ConnectionFactory.getConnectionFactory().getConnection()){
+
+            String sqlEntry = "select * from user_Account where email = ? ";
+            PreparedStatement preparedStatement = conn.prepareStatement(sqlEntry);
+
+            // DO NOT FORGET SQL is 1-index, not 0-index. They made preparedStatement 1-index
+            preparedStatement.setString(1,email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next())
+                throw new DataNotFoundException("No User with that ID exists");
+
+            return generateAccountFromResultSet(resultSet);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
 
     private Account generateAccountFromResultSet(ResultSet rs) throws SQLException{
         Account account = new Account();

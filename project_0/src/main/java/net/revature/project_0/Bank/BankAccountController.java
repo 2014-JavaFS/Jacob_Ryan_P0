@@ -20,14 +20,20 @@ public class BankAccountController implements Controller {
 
     @Override
     public void registerPaths(Javalin app) {
-    app.post("/Account/{accountID}/createBankAccount",this::addAccount);
-    app.get("/Account/{accountID}/Holdings",this::showAccounts);
-    app.get("/Account/Show_All_Bank_Accounts",this::getAllUserAccounts);
-    app.get("/Account/{accountID}/{accountNumber}",this::getAccountFromID);
 
-    //Needs to be updating already existing might need to be puts?
-    app.put("/Account/{accountID}/{accountNumber}/Deposit",this::deposit);
-    app.put("/Account/{accountID}/{accountNumber}/Withdrawal",this::withdrawal);
+    //For Testing/Presentation/Admin usage
+        app.post("/Account/{accountID}/createBankAccount",this::addAccount);
+        app.get("/Account/{accountID}/Holdings",this::showAccounts);
+        app.get("/Account/Show_All_Bank_Accounts",this::getAllUserAccounts);
+        app.get("/Account/{accountID}/{accountNumber}",this::getAccountFromID);
+        app.put("/Account/{accountID}/{accountNumber}/Deposit",this::deposit);
+        app.put("/Account/{accountID}/{accountNumber}/Withdrawal",this::withdrawal);
+
+
+    //The Actual End User Versions
+        app.get("/Account/Holdings",this::getAccountFromEnviorment);
+        app.put("/Account/Holdings/Withdrawal",this::putWithdrawal);
+        app.put("/Account/Holdings/Deposit",this::putDeposit);
 
     }
 
@@ -49,7 +55,7 @@ public class BankAccountController implements Controller {
         //Not sure if this is what I could be doing here but I'll try it
         context.status(HttpStatus.ACCEPTED);
     }
-    //TODO: Implement modifying an account on the DB, after Passing info for validation
+    //TODO: Implement Admin
     public void withdrawal(Context context){
 
 
@@ -76,5 +82,29 @@ public class BankAccountController implements Controller {
         context.json(foundAccount);
     }
 
+    //@TODO Make the End User Section Work for MVP
+
+    //End User View
+    private void getAccountFromEnviorment(Context context){
+
+
+    }
+
+    //End User Deposit
+    private void putDeposit(Context context){
+
+        int accountID = Integer.parseInt(context.pathParam("accountID"));
+        int accountNum = Integer.parseInt(context.pathParam("accountNumber"));
+        BigDecimal depositAmount = context.bodyAsClass(BigDecimal.class);
+        context.json(bankAccountService.putDeposit(depositAmount, accountNum, accountID));
+        //Not sure if this is what I could be doing here but I'll try it
+        context.status(HttpStatus.ACCEPTED);
+    }
+
+    //End User Withdrawal
+    private void putWithdrawal(Context context){}
+
+
+    //End User Create New Account
 
 }
