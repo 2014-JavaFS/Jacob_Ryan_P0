@@ -80,36 +80,6 @@ public class AccountRepository implements Serviceable<Account> {
     }
 
 
-    //TODO Make this instead create a Bank Account linked to the given Account
-    public BankAccount addAccount(Account addedAccount){
-
-        //Good enough until I setup Bank Account
-
-        try(Connection conn = ConnectionFactory.getConnectionFactory().getConnection()){
-            BankAccount linkedBankAccount = new BankAccount();
-            String sqlEntry = "insert into bank_Account(user_num_ID) values (?)";
-            // PreparedStatements SANITIZE any user input before execution
-            PreparedStatement preparedStatement = conn.prepareStatement(sqlEntry);
-
-            // DO NOT FORGET SQL is 1-index, not 0-index. They made preparedStatement 1-index
-            preparedStatement.setInt(1,addedAccount.getUserNumID() );
-
-
-            int checkInsert=preparedStatement.executeUpdate();
-            System.out.println("Inserting New Account");
-            if(checkInsert == 0){
-                throw new RuntimeException();}
-
-            return linkedBankAccount;
-
-        }catch(SQLException e){
-            e.printStackTrace();
-            return null;
-        }
-
-        //return addedAccount;
-    }
-
     //TODO: Implement update feature
     public boolean update(Account account) {
         try(Connection conn = ConnectionFactory.getConnectionFactory().getConnection()){

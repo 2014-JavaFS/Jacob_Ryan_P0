@@ -11,13 +11,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AccountController implements Controller {
-    private final Scanner scanner;
 
     private final AccountService accountService;
-    private int count =0;
 
-    public AccountController(Scanner scanner, AccountService accountService){
-        this.scanner=scanner;
+    public AccountController(AccountService accountService){
         this.accountService=accountService;
     }
 

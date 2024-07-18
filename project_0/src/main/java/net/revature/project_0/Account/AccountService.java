@@ -10,7 +10,6 @@ import java.util.List;
 
 public class AccountService implements Serviceable<Account> {
 
-    private List<Account> accountList = new ArrayList<>();
     private AccountRepository accountRepository;
 
     public  AccountService(AccountRepository accountRepository){
@@ -36,8 +35,6 @@ public class AccountService implements Serviceable<Account> {
     public Account findByID(int number) {
         return accountRepository.findByID(number);
     }
-
-    //TODO: UPDATE FEATURE????
 
     public boolean checkIfEmailIsInUse(String Email){
         Account checkingAccountExistence = accountRepository.findByEmail(Email);
@@ -105,5 +102,6 @@ public class AccountService implements Serviceable<Account> {
         return accountRepository.findByEmailAndPassword(email, password);
     }
 
+    //TODO: Implement the additional TODOs from Account Controller
 
 }

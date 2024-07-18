@@ -5,7 +5,6 @@ import net.revature.project_0.util.exceptions.InvalidInputException;
 import net.revature.project_0.util.interfaces.Serviceable;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BankAccountService implements Serviceable<BankAccount> {
@@ -83,6 +82,7 @@ public class BankAccountService implements Serviceable<BankAccount> {
         return true;
     }
 
+    //End User Deposit into Account
     public BankAccount putEndUserDeposit(BigDecimal depositAmount, int accountNum, int ID) {
 
         BankAccount toCheck = new BankAccount();
@@ -101,7 +101,7 @@ public class BankAccountService implements Serviceable<BankAccount> {
         // does check that the Deposit Amount isn't negative
         return putDeposit(depositAmount, accountNum, ID);
     }
-
+    //End User Withdrawal from Account
     public BankAccount putEndUserWithdrawal(BigDecimal withDrawalAmount, int accountNum, int ID) {
 
         BankAccount toCheck = new BankAccount();
@@ -135,15 +135,5 @@ public class BankAccountService implements Serviceable<BankAccount> {
 
 
     }
-
-    //End User Deposit into Account
-
-
-
-    //End User Withdrawal from Account
-
-
-
-
 
 }

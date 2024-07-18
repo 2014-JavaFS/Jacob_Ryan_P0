@@ -11,11 +11,11 @@ import java.util.Scanner;
 
 public class BankAccountController implements Controller {
     private final BankAccountService bankAccountService;
-    private final Scanner scanner;
 
-    public BankAccountController(Scanner scanner,BankAccountService bankAccountService){
+
+    public BankAccountController(BankAccountService bankAccountService){
         this.bankAccountService=bankAccountService;
-        this.scanner=scanner;
+
     }
 
     @Override

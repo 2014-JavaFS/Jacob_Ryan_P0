@@ -16,13 +16,10 @@ public class AuthController implements Controller {
     @Override
     public void registerPaths(Javalin app) {
         app.post("/login",this::postLogin);
-        app.get("/user-info", this::getRedirect);
     }
 
-    //Not sure if I'm going to be using this
-    //TODO: Figure out if this redirect is needed to be implemented
-    private void getRedirect(Context context){}
 
+    //TODO:Implement Check that if Password is Wrong doesn't Error but instead replys back
     private void postLogin(Context context){
             String email = context.queryParam("email");
             String password = context.queryParam("password");
