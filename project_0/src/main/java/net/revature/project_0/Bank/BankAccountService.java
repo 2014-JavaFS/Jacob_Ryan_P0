@@ -62,12 +62,43 @@ public class BankAccountService implements Serviceable<BankAccount> {
     public boolean openNewAccount(int userID){
         //TODO:Read Bellow and Implement for MVP
         //userID is the Account Owner, Need to find a valid Account Number that isn't in use
-        //Look at AccountService newUserCreateAccount for reference
         //Create a regular Bank Account and fill it with the data, then Call Create with the
         //Filled in Bank Account Object
+        BankAccount newlyOpenedAccount = new BankAccount();
+        newlyOpenedAccount.setAccountOwner(userID);
 
+        //Finding an unused account number
+        int creatingNewAccountNumber = (int)(Math.random()*10000000);
+        boolean looking = true;
+        while(looking) {
+            try {
+                findByID(creatingNewAccountNumber);
+            } catch (DataNotFoundException e) {
+                newlyOpenedAccount.setAccountNumber(creatingNewAccountNumber);
+                looking=false;
+            }
+        }
 
+        bankRepository.create(newlyOpenedAccount);
         return true;
+    }
+
+    public BankAccount putEndUserDeposit(BigDecimal depositAmount, int accountNum, int ID) {
+
+        BankAccount toCheck = new BankAccount();
+        //Check that Account Exists, and if it does that the User IDs match
+        try {
+            toCheck = findByID(accountNum);
+            }catch (DataNotFoundException e){
+            e.printStackTrace();
+            return null;
+            }
+
+        if(toCheck.getAccountOwner()!=ID){
+            return null;
+        }
+        //Function does check that the Deposit Amount isn't negative
+        return putDeposit(depositAmount, accountNum, ID);
     }
 
     //End User Deposit into Account

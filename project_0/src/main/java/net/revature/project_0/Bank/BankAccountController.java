@@ -46,7 +46,7 @@ public class BankAccountController implements Controller {
 
     }
 
-    //TODO: Implement modifying an account on the DB, after Passing info for validation
+    //Admin method
     public void deposit(Context context){
 
         int accountID = Integer.parseInt(context.pathParam("accountID"));
@@ -103,13 +103,37 @@ public class BankAccountController implements Controller {
     //TODO:Implement
     private void putDeposit(Context context){
 
+        //This is getting the currently logged in user
+        String accountString ="";
+        accountString+=context.header("user_number_ID");
+        if(accountString.isEmpty()){
+            context.json("Not Logged In\nCreate an account ");
+            return;
+        }
+        //Checking that the user actually inputed paramaters
+        String checkingNull="";
+        checkingNull+=context.queryParam("Account Number");
+        if(checkingNull.isEmpty()) {
+            context.json("Error no Account Selected/Entered");
+            return;
+        }
+        String checkingNull2="";
+        checkingNull2+=context.queryParam("Deposit Amount");
+        if(checkingNull2.isEmpty()) {
+            context.json("Error no Account Selected/Entered");
+            return;
+        }
 
-        int accountID = Integer.parseInt(context.pathParam("accountID"));
-        int accountNum = Integer.parseInt(context.pathParam("accountNumber"));
-        BigDecimal depositAmount = context.bodyAsClass(BigDecimal.class);
-        context.json(bankAccountService.putDeposit(depositAmount, accountNum, accountID));
-        //Not sure if this is what I could be doing here but I'll try it
-        context.status(HttpStatus.ACCEPTED);
+        int accountNum =Integer.parseInt(checkingNull);
+        BigDecimal depositAmount = new BigDecimal(checkingNull2);
+        BankAccount output = bankAccountService.putEndUserDeposit(depositAmount, accountNum, Integer.parseInt(accountString));
+        if(output!=null){
+        context.json(output);
+        context.status(HttpStatus.ACCEPTED);}
+        else {
+            context.json("Error Wrong Credentials were used");
+            context.status(HttpStatus.UNAUTHORIZED);
+        }
     }
 
     //End User Withdrawal
