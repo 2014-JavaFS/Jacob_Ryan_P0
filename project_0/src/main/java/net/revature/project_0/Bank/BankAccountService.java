@@ -93,20 +93,55 @@ public class BankAccountService implements Serviceable<BankAccount> {
             e.printStackTrace();
             return null;
             }
-
         if(toCheck.getAccountOwner()!=ID){
             return null;
         }
-        //Function does check that the Deposit Amount isn't negative
+
+        //Function That we pass to make the deposit also
+        // does check that the Deposit Amount isn't negative
         return putDeposit(depositAmount, accountNum, ID);
     }
 
+    public BankAccount putEndUserWithdrawal(BigDecimal withDrawalAmount, int accountNum, int ID) {
+
+        BankAccount toCheck = new BankAccount();
+        //Check that Account Exists, and if it does that the User IDs match
+        //System.out.println("checking Progress 1");
+        try {
+            toCheck = findByID(accountNum);
+        }catch (DataNotFoundException e){
+            e.printStackTrace();
+            return null;
+        }
+        //System.out.println("checking Progress 3");
+        if(toCheck.getAccountOwner()!=ID){
+            return null;
+        }
+        BigDecimal toCompare = BigDecimal.valueOf(0);
+        if(withDrawalAmount.compareTo(toCompare) < 0)
+            return null;
+        //System.out.println("checking Progress 4");
+        //System.out.println(withDrawalAmount);
+        //System.out.println(toCheck.getBalance());
+        //System.out.println(withDrawalAmount.compareTo(toCheck.getBalance()));
+        //Makes sure that the funds in the account are enough to not overdraft
+        if(withDrawalAmount.compareTo(toCheck.getBalance())==-1)
+            return bankRepository.withdrawal(toCheck, withDrawalAmount);
+        else
+            return null;
+
+        //
+
+
+
+    }
+
     //End User Deposit into Account
-    //TODO:Implement
+
 
 
     //End User Withdrawal from Account
-    //TODO:Implement
+
 
 
 

@@ -153,8 +153,43 @@ public class BankRepository implements Serviceable<BankAccount> {
     }
 
     //TODO:Placeholder
-    public BankAccount withdrawal(){
-        return null;
+    public BankAccount withdrawal(BankAccount accountWithFunds, BigDecimal withdrawlAmmount){
+        try(Connection conn = ConnectionFactory.getConnectionFactory().getConnection()) {
+
+
+            String sqlEntry = "update bank_Account set account_balance = account_balance - ? where account_Number = ? AND user_number_ID = ?";
+            // PreparedStatements SANITIZE any user input before execution
+            PreparedStatement preparedStatement = conn.prepareStatement(sqlEntry);
+
+            // DO NOT FORGET SQL is 1-index, not 0-index. They made preparedStatement 1-index
+
+            preparedStatement.setInt(2, accountWithFunds.getAccountNumber());
+            preparedStatement.setInt(3, accountWithFunds.getAccountOwner());
+            preparedStatement.setBigDecimal(1, withdrawlAmmount);
+
+            int checkInsert=preparedStatement.executeUpdate();
+            System.out.println("The Funds are being Withdrew");
+            if(checkInsert == 0){
+                throw new RuntimeException();}
+
+
+            sqlEntry = "select * from bank_Account where user_number_ID = ? AND account_Number = ?";
+            preparedStatement = conn.prepareStatement(sqlEntry);
+
+            // DO NOT FORGET SQL is 1-index, not 0-index. They made preparedStatement 1-index
+            preparedStatement.setInt(2, accountWithFunds.getAccountNumber());
+            preparedStatement.setInt(1, accountWithFunds.getAccountOwner());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next())
+                throw new DataNotFoundException("No Account with that number exists");
+
+            return generateAccountFromResultSet(resultSet);
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private BankAccount generateAccountFromResultSet(ResultSet rs) throws SQLException{

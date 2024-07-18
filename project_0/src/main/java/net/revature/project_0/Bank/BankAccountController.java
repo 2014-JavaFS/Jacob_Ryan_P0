@@ -138,7 +138,41 @@ public class BankAccountController implements Controller {
 
     //End User Withdrawal
     //TODO:Implement
-    private void putWithdrawal(Context context){}
+    private void putWithdrawal(Context context){
+
+        //This is getting the currently logged in user
+        String accountString ="";
+        accountString+=context.header("user_number_ID");
+        if(accountString.isEmpty()){
+            context.json("Not Logged In\nCreate an account ");
+            return;
+        }
+        //Checking that the user actually inputed paramaters
+        String checkingNull="";
+        checkingNull+=context.queryParam("Account Number");
+        if(checkingNull.isEmpty()) {
+            context.json("Error no Account Selected/Entered");
+            return;
+        }
+        String checkingNull2="";
+        checkingNull2+=context.queryParam("Withdrawal Amount");
+        if(checkingNull2.isEmpty()) {
+            context.json("Error no Account Selected/Entered");
+            return;
+        }
+
+        int accountNum =Integer.parseInt(checkingNull);
+        BigDecimal depositAmount = new BigDecimal(checkingNull2);
+        BankAccount output = bankAccountService.putEndUserWithdrawal(depositAmount, accountNum, Integer.parseInt(accountString));
+        if(output!=null){
+            context.json(output);
+            context.status(HttpStatus.ACCEPTED);}
+        else {
+            context.json("Error Encountered: Potential Causes\nAccount Number May Be Incorrect Check and Try again\n Overdraft or Negative " +
+                    "Amount attempted to be withdrew.");
+            context.status(HttpStatus.UNAUTHORIZED);
+        }
+    }
 
 
     //End User Create New Account
