@@ -39,7 +39,7 @@ public class AccountController implements Controller {
     @Override
     public void registerPaths(Javalin app) {
         //app.get("/Account", this::getAllAccounts);
-        app.post("/Account",this::postNewAccount);
+        //app.post("/Account",this::postNewAccount);
         app.get("/Account/showAll",this::getAllAccounts);
         app.get("/Account/", this::getAccountByID);
         app.post("/Account/Create",this::postCreateNewAccount);

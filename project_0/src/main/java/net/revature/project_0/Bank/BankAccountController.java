@@ -22,12 +22,12 @@ public class BankAccountController implements Controller {
     public void registerPaths(Javalin app) {
 
     //For Testing/Presentation/Admin usage
-        app.post("/Account/{accountID}/createBankAccount",this::addAccount);
-        app.get("/Account/{accountID}/Holdings",this::showAccounts);
+        //app.post("/Account/{accountID}/createBankAccount",this::addAccount);
+        //app.get("/Account/{accountID}/Holdings",this::showAccounts);
         app.get("/Account/Show_All_Bank_Accounts",this::getAllUserAccounts);
-        app.get("/Account/{accountID}/{accountNumber}",this::getAccountFromID);
-        app.put("/Account/{accountID}/{accountNumber}/Deposit",this::deposit);
-        app.put("/Account/{accountID}/{accountNumber}/Withdrawal",this::withdrawal);
+        //app.get("/Account/{accountID}/{accountNumber}",this::getAccountFromID);
+        //app.put("/Account/{accountID}/{accountNumber}/Deposit",this::deposit);
+        //app.put("/Account/{accountID}/{accountNumber}/Withdrawal",this::withdrawal);
 
 
     //The Actual End User Versions

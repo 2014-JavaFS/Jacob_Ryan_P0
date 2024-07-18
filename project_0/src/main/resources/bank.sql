@@ -43,6 +43,18 @@ create table user_Account(
     account_privilege member_enum default 'endUser'
 );
 
+create type transaction_enum as enum ('Account_Creation','Deposit','Withdrawal','Transfer');
+create table account_Transactions(
+    transaction_number serial primary key,
+    account_number integer,
+    transaction_amount decimal(15,2),
+    transaction_type member_enum not null
+);
+
+alter table account_Transactions
+add constraint fk_account_number
+FOREIGN KEY (account_number) references bank_Account(account_number);
+
 --data propagation for testing
 insert into
     bank_Account(account_number, user_number_ID, account_type, account_balance)
