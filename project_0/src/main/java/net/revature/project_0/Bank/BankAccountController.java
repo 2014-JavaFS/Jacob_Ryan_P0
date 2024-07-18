@@ -100,7 +100,6 @@ public class BankAccountController implements Controller {
     }
 
     //End User Deposit
-    //TODO:Implement
     private void putDeposit(Context context){
 
         //This is getting the currently logged in user
@@ -131,13 +130,12 @@ public class BankAccountController implements Controller {
         context.json(output);
         context.status(HttpStatus.ACCEPTED);}
         else {
-            context.json("Error Wrong Credentials were used");
+            context.json("Error Wrong Credentials were used or attempted to withdrawal funds when depositing");
             context.status(HttpStatus.UNAUTHORIZED);
         }
     }
 
     //End User Withdrawal
-    //TODO:Implement
     private void putWithdrawal(Context context){
 
         //This is getting the currently logged in user

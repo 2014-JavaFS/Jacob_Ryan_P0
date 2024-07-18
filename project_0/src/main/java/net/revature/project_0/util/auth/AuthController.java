@@ -4,6 +4,7 @@ import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import net.revature.project_0.Account.Account;
+import net.revature.project_0.util.exceptions.DataNotFoundException;
 import net.revature.project_0.util.interfaces.Controller;
 
 import javax.security.sasl.AuthenticationException;
@@ -30,6 +31,10 @@ public class AuthController implements Controller {
                 context.header("account_privilege",account.getAccountType().name());
                 context.status(200);
             }catch(AuthenticationException e){
+                context.status(HttpStatus.UNAUTHORIZED);
+            }
+            catch(DataNotFoundException e){
+                context.json("Either Password is Wrong or Account isn't registered");
                 context.status(HttpStatus.UNAUTHORIZED);
             }
     }

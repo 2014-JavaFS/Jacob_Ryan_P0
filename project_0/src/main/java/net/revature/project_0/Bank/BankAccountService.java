@@ -96,6 +96,9 @@ public class BankAccountService implements Serviceable<BankAccount> {
         if(toCheck.getAccountOwner()!=ID){
             return null;
         }
+        if(depositAmount.compareTo(BigDecimal.valueOf(0))==-1)
+            return null;
+
 
         //Function That we pass to make the deposit also
         // does check that the Deposit Amount isn't negative
